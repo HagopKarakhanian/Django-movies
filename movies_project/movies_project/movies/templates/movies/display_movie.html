@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Display Movie</title>
+    <style>
+        body { font-family: Arial; background: #f0f2f5; padding: 20px; }
+        h2 { color: #333; }
+        form { margin-top: 15px; padding: 10px; background: #fff; border: 1px solid #ddd; width: 300px; }
+        input, button { display: block; margin: 10px 0; padding: 5px; width: 95%; }
+        button { background-color: #007bff; color: white; border: none; cursor: pointer; }
+        button:hover { background-color: #0056b3; }
+        a { text-decoration: none; color: #007bff; }
+        a:hover { color: #0056b3; }
+        p { margin: 5px 0; }
+    </style>
+</head>
+<body>
+    <h2>Display Movie</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <label>Enter Movie Name:</label>
+        <input type="text" name="name" required>
+        <button type="submit">Search</button>
+    </form>
+
+    {% if movie %}
+        <h3>Movie Details:</h3>
+        <p>Name: {{ movie.name }}</p>
+        <p>Duration: {{ movie.duration }} minutes</p>
+        <p>Minimum Age: {{ movie.minimum_age }}</p>
+        <p>Genre: {{ movie.genre }}</p>
+    {% elif movie is not none %}
+        <p>No movie found with that name.</p>
+    {% endif %}
+
+    <a href="{% url 'home' %}">Back to Home</a>
+</body>
+</html>
