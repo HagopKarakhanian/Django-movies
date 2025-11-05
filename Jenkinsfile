@@ -10,7 +10,7 @@ pipeline {
  
     stage('Checkout') { 
       steps { 
-        git branch: 'main', url: 'https://github.com/HagopKarakhanian/Django-movies.git'
+        git branch: 'main', url: 'https://github.com/HagopKarakhanian/Django-movies'
       } 
     } 
  
